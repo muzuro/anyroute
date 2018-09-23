@@ -1,0 +1,18 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+#idea
+.idea
+*.iml
+
+#gradle
+server/gradle
+.gradle
+
+#mobile
+mobile/android
+mobile/mobile_android
+mobile/ios
