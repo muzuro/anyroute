@@ -16,3 +16,6 @@ server/gradle
 mobile/android
 mobile/mobile_android
 mobile/ios
+
+#flutter
+**/pubspec.lock
