@@ -7,7 +7,7 @@ import 'package:mobile/model/route.dart' as m;
 void main() {
   var route = new m.Route();
 
-  for (var i = 0; i < 20; ++i) {
+  for (var i = 0; i < 200; ++i) {
     var task1 = new m.Task();
     var point1 = new m.Point();
     point1.name = "point$i name";
@@ -37,18 +37,20 @@ class FlutterReduxApp extends StatelessWidget {
           appBar: new AppBar(
             title: new Text(title),
           ),
-          body: new Column(
-            children: [
-              new StoreConnector<m.Route, m.Route>(
-                converter: (store) => store.state,
-                builder: (context, route) {
-                    return new ListView.builder(
-                        itemCount: route.tasks.length,
-                        itemBuilder: (context, position) => new TaskItem(task: route.tasks[position])
-                    );
-                }
-              )
-            ]
+          body: new StoreConnector<m.Route, m.Route>(
+              converter: (store) => store.state,
+              builder: (context, route) {
+                return new ListView.separated(
+                  itemCount: route.tasks.length,
+                  itemBuilder: (context, position) => new TaskItem(task: route.tasks[position]),
+                  separatorBuilder: ((context, position) =>
+                    new Padding(
+                      padding: EdgeInsets.only(left: 20.0, right: 20.0),
+                      child:new Container(height: 1.5, color: Colors.grey)
+                    )
+                  ),
+                );
+              }
           )
         )
       ),
@@ -65,7 +67,13 @@ class TaskItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Row(
-      children: [new Text(task.point.name)],
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Container(
+          padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+          child: Text(task.point.name, style: TextStyle(fontSize: 18.0))
+        )
+      ],
     );
   }
 

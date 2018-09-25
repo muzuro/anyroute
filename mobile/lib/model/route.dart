@@ -3,7 +3,7 @@
 import 'package:mobile/model/stereotypes.dart';
 
 class Route extends LongIdDto {
-  List<Task> tasks;
+  List<Task> tasks = [];
 }
 
 class Task extends LongIdDto {
