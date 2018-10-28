@@ -9,15 +9,6 @@ import 'package:mobile/model/route.dart' as m;
 
 void main() {
   var route = new m.Route();
-
-  for (var i = 0; i < 200; ++i) {
-    var task1 = new m.Task();
-    var point1 = new m.Point();
-    point1.name = "point$i name";
-    task1.point = point1;
-    route.tasks.add(task1);
-  }
-
   final store = new Store<m.Route>(allReducers, initialState: route);
   runApp(new FlutterReduxApp(store: store));
 }
