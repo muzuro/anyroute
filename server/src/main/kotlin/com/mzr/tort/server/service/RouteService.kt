@@ -20,8 +20,6 @@ class RouteService {
     @Autowired
     lateinit var entityManager: EntityManager
 
-    var some: From<Void, Void>? = null;
-
     fun findRoute(driverId: Long): RouteDto {
         val driverRef = entityManager.getReference(Driver::class.java, driverId)
 
